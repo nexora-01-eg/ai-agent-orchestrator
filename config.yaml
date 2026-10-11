@@ -1,0 +1,169 @@
+# AI Coding Agent Orchestrator Configuration
+
+# General settings
+general:
+  workspace_dir: "C:\\Users\\NOUR SOFT\\Documents\\AI-Agent-Orchestrator\\workspaces"
+  log_level: "INFO"
+  max_retries: 3
+  default_timeout: 300
+  auto_approve: false
+  confirm_destructive: true
+  free_only: true
+  local_first: true
+
+# Default agent preferences
+agent_preferences:
+  default_agent: "auto"  # auto, OpenCode, Aider, Gemini, Qwen
+  fallback_agents: ["OpenCode", "Aider", "Qwen", "Gemini"]
+  prefer_local_models: true
+
+# Local model server settings
+local_models:
+  lm_studio:
+    enabled: true
+    url: "http://localhost:1234/v1"
+    api_key: "lm-studio"
+  ollama:
+    enabled: false
+    url: "http://localhost:11434/v1"
+    api_key: ""
+
+# Secret scanner settings
+secret_scanner:
+  enabled: true
+  patterns:
+    - "\\.env$"
+    - "\\.env\\."
+    - ".*\\.key$"
+    - ".*\\.pem$"
+    - ".*\\.p12$"
+    - ".*\\.pfx$"
+    - "id_rsa"
+    - "id_ed25519"
+    - ".*_rsa$"
+    - ".*_dsa$"
+    - ".*secret.*"
+    - ".*password.*"
+    - ".*token.*"
+    - ".*api[_-]?key.*"
+    - ".*auth.*"
+    - ".*credential.*"
+    - "BEGIN (RSA|DSA|EC|OPENSSH) PRIVATE KEY"
+  exclude_patterns:
+    - ".*\\.example$"
+    - ".*\\.template$"
+    - ".*\\.sample$"
+
+# Agent-specific configurations
+agents:
+  OpenCode:
+    enabled: true
+    command: "opencode"
+    path: "C:\\Users\\NOUR SOFT\\AppData\\Roaming\\npm\\opencode.ps1"
+    args: []
+    env: {}
+    supports_local: true
+    local_model_config:
+      provider: "openai_compatible"
+      base_url: "http://localhost:1234/v1"
+      api_key: "lm-studio"
+      model: "qwen2.5-coder-7b-instruct"
+
+  Aider:
+    enabled: true
+    command: "aider"
+    args: ["--yes-always"]
+    env:
+      OLLAMA_API_BASE: "http://localhost:1234/v1"
+    supports_local: true
+    local_model_config:
+      model: "openai/qwen2.5-coder-7b-instruct"
+      openai_base_url: "http://localhost:1234/v1"
+      openai_api_key: "lm-studio"
+
+  Gemini:
+    enabled: true
+    command: "gemini"
+    args: []
+    env: {}
+    supports_local: false
+    requires_auth: true
+
+  Qwen:
+    enabled: true
+    command: "qwen"
+    args: []
+    env: {}
+    supports_local: true
+    local_model_config:
+      auth_type: "openai"
+      openai_base_url: "http://localhost:1234/v1"
+      openai_api_key: "lm-studio"
+      model: "qwen2.5-coder-7b-instruct"
+
+# Task execution settings
+execution:
+  create_git_checkpoint: true
+  backup_before_changes: true
+  max_file_size_mb: 10
+  excluded_dirs: [".git", "__pycache__", "node_modules", ".venv", "venv", "dist", "build"]
+  excluded_files: [".env", "*.key", "*.pem", "*.secret"]
+
+# Testing settings
+testing:
+  auto_detect: true
+  run_after_changes: true
+  commands:
+    python: "pytest -v"
+    javascript: "npm test"
+    typescript: "npm test"
+    rust: "cargo test"
+    go: "go test ./..."
+    dotnet: "dotnet test"
+
+# Safety settings
+safety:
+  blocked_commands:
+    - "rm -rf /"
+    - "format"
+    - "del /f /s /q"
+    - "rd /s /q"
+    - "reg delete"
+    - "shutdown"
+    - "taskkill /f"
+    - "net user"
+    - "net localgroup"
+  blocked_paths:
+    - "C:\\Windows"
+    - "C:\\Program Files"
+    - "C:\\Program Files (x86)"
+    - "C:\\Users\\All Users"
+    - "C:\\ProgramData"
+  require_confirmation_for:
+    - "delete"
+    - "remove"
+    - "format"
+    - "uninstall"
+
+# History database
+history:
+  enabled: true
+  db_path: "C:\\Users\\NOUR SOFT\\Documents\\AI-Agent-Orchestrator\\orchestrator.db"
+  max_entries: 1000
+
+# Dashboard settings (optional; CLI works without it)
+dashboard:
+  enabled: false
+  port: 8787
+  host: "127.0.0.1"
+
+# Supervisor settings
+supervisor:
+  task_modes: ["SAFE", "AUTO", "AUTONOMOUS"]
+  default_mode: "AUTO"
+  cost_policy: "ZERO_COST"
+  max_attempts: 3
+
+# Scheduler settings (stored tasks only; never auto-runs)
+scheduler:
+  enabled: true

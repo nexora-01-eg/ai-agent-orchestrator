@@ -1,0 +1,223 @@
+{
+  "environment": {
+    "os": "Microsoft Windows 10 Pro for Workstations",
+    "os_version": "10.0.19045 Build 19045",
+    "cpu": "Intel(R) Core(TM) i7-7820HQ CPU @ 2.90GHz",
+    "cores": 4,
+    "logical_processors": 8,
+    "ram_mb": 16265,
+    "gpu": [
+      {
+        "name": "Intel(R) HD Graphics 630",
+        "vram_mb": 1024
+      },
+      {
+        "name": "NVIDIA GeForce 940MX",
+        "vram_mb": 2048
+      }
+    ],
+    "disk_c_free_gb": 106,
+    "disk_d_free_gb": 342
+  },
+  "tools": {
+    "node": {
+      "available": true,
+      "version": "v24.14.1",
+      "path": "C:\\Program Files\\nodejs\\node.exe"
+    },
+    "npm": {
+      "available": true,
+      "version": "11.11.0",
+      "path": "C:\\Program Files\\nodejs\\npm.cmd"
+    },
+    "python": {
+      "available": true,
+      "version": "3.11.9",
+      "path": "C:\\Users\\NOUR SOFT\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "note": "Windows Store alias blocks 'python' command. Use full path: C:\\Users\\NOUR SOFT\\AppData\\Local\\Programs\\Python\\Python311\\python.exe"
+    },
+    "pip": {
+      "available": true,
+      "version": "26.2.1"
+    },
+    "git": {
+      "available": true,
+      "version": "2.53.0.windows.2",
+      "path": "C:\\Program Files\\Git\\cmd\\git.exe"
+    },
+    "pytest": {
+      "available": true,
+      "version": "9.1.1",
+      "note": "Installed from official PyPI for the supervisor test gate"
+    }
+  },
+  "agents": {
+    "OpenCode": {
+      "name": "OpenCode",
+      "command": "opencode",
+      "version": "1.18.31",
+      "path": "C:\\Users\\NOUR SOFT\\AppData\\Roaming\\npm\\opencode.ps1",
+      "available": true,
+      "file_read": true,
+      "file_write": true,
+      "file_edit": true,
+      "terminal_access": true,
+      "local_model": true,
+      "local_model_providers": ["ollama", "lm_studio", "openai_compatible"],
+      "free_tier": true,
+      "requires_auth": false,
+      "license": "MIT",
+      "tested_capabilities": {
+        "create_file": true,
+        "read_file": true,
+        "edit_file": true,
+        "run_shell": true,
+        "run_tests": false,
+        "test_reason": "pytest not installed"
+      },
+      "working": true,
+      "last_tested": "2026-09-18T18:36:02",
+      "status": "WORKING"
+    },
+    "Aider": {
+      "name": "Aider",
+      "command": "aider",
+      "version": "0.86.2",
+      "path": "C:\\Users\\NOUR SOFT\\.local\\bin\\aider.exe",
+      "available": true,
+      "file_read": true,
+      "file_write": true,
+      "file_edit": true,
+      "terminal_access": true,
+      "local_model": true,
+      "local_model_providers": ["ollama", "lm_studio", "openai_compatible"],
+      "free_tier": true,
+      "requires_auth": false,
+      "license": "Apache-2.0",
+      "tested_capabilities": {
+        "create_file": true,
+        "read_file": true,
+        "edit_file": true,
+        "run_shell": true,
+        "run_tests": true,
+        "test_reason": "Live-tested 2026-09-21 on Temp project aider-live with LM Studio qwen2.5-coder-7b-instruct: created greet.py + test_greet.py, auto-commit 35f4bb0, 1 pytest passed"
+      },
+      "working": true,
+      "blocked_by": null,
+      "status": "READY",
+      "action_required": null,
+      "last_verified": "2026-09-21"
+    },
+    "Gemini CLI": {
+      "name": "Gemini CLI",
+      "command": "gemini",
+      "version": "0.60.0",
+      "path": "C:\\Users\\NOUR SOFT\\AppData\\Roaming\\npm\\gemini.ps1",
+      "available": true,
+      "file_read": true,
+      "file_write": true,
+      "file_edit": true,
+      "terminal_access": true,
+      "local_model": false,
+      "local_model_providers": [],
+      "free_tier": true,
+      "free_tier_details": "60 req/min, 1000 req/day with Google account",
+      "requires_auth": true,
+      "auth_methods": ["OAuth (Google)", "API Key", "Vertex AI"],
+      "license": "Apache-2.0",
+      "tested_capabilities": {
+        "create_file": false,
+        "read_file": false,
+        "edit_file": false,
+        "run_shell": false,
+        "run_tests": false,
+        "test_reason": "Requires Google OAuth (run 'gemini auth')"
+      },
+      "working": false,
+      "blocked_by": null,
+      "status": "AUTH_REQUIRED",
+      "action_required": "Run one step: gemini auth (Google OAuth in browser, free tier). System auto-detects afterwards."
+    },
+    "Qwen Code": {
+      "name": "Qwen Code",
+      "command": "qwen",
+      "version": "0.24.0",
+      "path": "C:\\Users\\NOUR SOFT\\AppData\\Roaming\\npm\\qwen.ps1",
+      "available": true,
+      "file_read": true,
+      "file_write": true,
+      "file_edit": true,
+      "terminal_access": true,
+      "local_model": true,
+      "local_model_providers": ["ollama", "lm_studio", "openai_compatible", "vllm"],
+      "free_tier": true,
+      "free_tier_details": "Self-hosted models are free. Hosted requires API key.",
+      "requires_auth": true,
+      "auth_methods": ["OpenAI compatible", "Anthropic", "Qwen OAuth", "Gemini", "Vertex AI"],
+      "license": "Apache-2.0",
+      "tested_capabilities": {
+        "create_file": false,
+        "read_file": false,
+        "edit_file": false,
+        "run_shell": false,
+        "run_tests": false,
+        "test_reason": "Requires authentication (--auth-type) or LM Studio for local mode"
+      },
+      "working": false,
+      "blocked_by": null,
+      "status": "WARNING",
+      "action_required": "Qwen CLI needs >=24K context (n_keep ~23K); 7B crashes/is unstable at >=24K on this 16GB box (live-tested: crash at 32K, worker restart at 24K) and errors at 4K. Options: smaller coder model with 32K ctx, Qwen cloud auth, or more RAM. Use Aider/OpenCode for local work meanwhile.",
+      "live_attempts": "3 (4K ctx API error; 32K native crash; 24K worker restart after ~17min)",
+      "last_verified": "2026-09-21"
+    }
+  },
+  "local_model_servers": {
+    "LM Studio": {
+      "installed": true,
+      "version": "0.4.14-4",
+      "path": "C:\\Users\\NOUR SOFT\\AppData\\Local\\Programs\\LM Studio\\LM Studio.exe",
+      "running": true,
+      "started_via": "lms server start --port 1234 (headless, localhost only)",
+      "api_url": "http://localhost:1234/v1",
+      "models": ["text-embedding-nomic-embed-text-v1.5"],
+      "coding_models": [],
+      "note": "Server runs headless; only an embedding model is on disk. A coding model download+load is a manual GUI step.",
+      "lms_cli_available": true,
+      "lms_cli_path": "C:\\Users\\NOUR SOFT\\.lmstudio\\bin\\lms.exe"
+    },
+    "Ollama": {
+      "installed": false,
+      "running": false,
+      "api_url": "http://localhost:11434/v1",
+      "models": []
+    }
+  },
+  "summary": {
+    "total_agents": 4,
+    "working_agents": 2,
+    "blocked_agents": 0,
+    "auth_required_agents": 1,
+    "model_required_agents": 0,
+    "warning_agents": 1,
+    "local_model_servers_installed": 1,
+    "local_model_servers_running": 1,
+    "local_coding_models": 1,
+    "python_path_issue": "Windows Store alias blocks bare 'python' command. Launchers use full path: C:\\Users\\NOUR SOFT\\AppData\\Local\\Programs\\Python\\Python311\\python.exe"
+  },
+  "orchestrator": {
+    "version": "2.0.0-supervisor",
+    "free_only": true,
+    "local_first": true,
+    "secret_scanner": true,
+    "git_safety": true,
+    "history_enabled": true,
+    "supervisor": true,
+    "task_modes": ["SAFE", "AUTO", "AUTONOMOUS"],
+    "cost_policy": "ZERO_COST",
+    "multi_agent": true,
+    "dashboard": "optional :8787",
+    "scheduler": "stored-only",
+    "tasks_completed": 7,
+    "last_test_date": "2026-09-21"
+  }
+}

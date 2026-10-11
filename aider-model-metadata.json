@@ -1,0 +1,12 @@
+{
+  "_comment": "Official Aider --model-metadata-file for the local LM Studio model. Registered into litellm's model DB so aider's sanity check finds max_input_tokens and stops warning + opening the docs page. Values reflect the LOADED server context (lms ps CONTEXT column), NOT the native 32K: declaring more than the server serves causes oversized prompts and API errors (verified live). If you reload the model with a larger context (lms load ... --context-length N), update max_tokens/max_input_tokens to N. Costs are 0: local inference is free.",
+  "openai/qwen2.5-coder-7b-instruct": {
+    "max_tokens": 4096,
+    "max_input_tokens": 4096,
+    "max_output_tokens": 1024,
+    "input_cost_per_token": 0,
+    "output_cost_per_token": 0,
+    "litellm_provider": "openai",
+    "mode": "chat"
+  }
+}
